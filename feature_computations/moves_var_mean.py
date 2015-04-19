@@ -45,11 +45,15 @@ for row in points:
 
 std = [0] * 25000
 
+
+fd = open( "variance_points.data", "w")
 i = 0;
 for match in allPoints:
 	std[i] = stddev( match)
+	fd.write( str(std[i]) + "\n")
 	i += 1
 
+fd.close()
 
 results = parser.parseData( "../data/data.pgn")
 elo = results["whiteElo"] + results["blackElo"]
