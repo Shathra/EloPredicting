@@ -96,3 +96,80 @@ for row in data_f:
 fd.close()
 '''
 
+'''
+fd = open( "no_of_piece_taken.data", "w")
+
+n=25000
+i = -1
+no = 0;
+for row in data_f:
+    if i == n:
+        break
+    if row.startswith('[Site'):
+    	if i >= 0:
+    		fd.write( str(no) + "\n")
+        i += 1
+        no = 0;
+
+    else:
+    	no += row.count('x')
+
+fd.close()
+'''
+
+'''
+fd1 = open( "no_of_piece_taken.data")
+fd2 = open( "match_len.data")
+fd3 = open( "no_of_piece_taken_scaled.data", "w")
+
+n=25000
+i = -1
+for i, row in enumerate(fd1):
+	length = fd2.readline()
+	length = int(length)
+	result = float(row) / length
+	fd3.write( str( result) + "\n")
+#for i, line in enumerate(fp):
+
+fd1.close()
+fd2.close()
+fd3.close()
+'''
+
+'''
+fd = open( "no_of_checks.data", "w")
+
+n=25000
+i = -1
+no = 0;
+for row in data_f:
+    if i == n:
+        break
+    if row.startswith('[Site'):
+    	if i >= 0:
+    		fd.write( str(no) + "\n")
+        i += 1
+        no = 0;
+
+    else:
+    	no += row.count('+')
+
+fd.close()
+'''
+
+fd1 = open( "no_of_checks.data")
+fd2 = open( "match_len.data")
+fd3 = open( "no_of_checks_scaled.data", "w")
+
+n=25000
+i = -1
+for i, row in enumerate(fd1):
+	length = fd2.readline()
+	length = int(length)
+	result = float(row) / length
+	fd3.write( str( result) + "\n")
+#for i, line in enumerate(fp):
+
+fd1.close()
+fd2.close()
+fd3.close()
