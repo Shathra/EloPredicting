@@ -4,7 +4,7 @@ TODO List:
 ##Predicting A + B
 
   - [x] Parse Features:
-  - [ ] Split training, validation and test features and labels:
+  - [x] Split training, validation and test features and labels:
   - [x] Remove NA strings in data
   - [ ] Write a tester
 
@@ -25,4 +25,3 @@ TODO List:
 * Parse Features:
   - [x] no_of_white_mistakes
   - [x] no_of_black_mistakes
-  
