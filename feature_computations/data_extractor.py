@@ -8,19 +8,20 @@ results = parser.parseData( "../data/data.pgn", 50000)
 
 data_f = open("../data/data.pgn")
 
-#----Match Quality Extraction A + B----
 '''
-fd = open( "match_quality.data", "w")
+#----Match Quality Extraction A + B----
+
+fd = open( "results/sum.lab", "w")
 
 for i in range(0, len( results["whiteElo"])):
 	fd.write( str( int( results["whiteElo"][i] +  results["blackElo"][i])) + "\n")
 
 fd.close()
-'''
+
 
 #----Performance Difference Extraction |A - B|----
-'''
-fd = open( "perf_diff.data", "w")
+
+fd = open( "results/dif.lab", "w")
 
 for i in range(0, len( results["whiteElo"])):
 	fd.write( str( abs( int( results["whiteElo"][i] - results["blackElo"][i]))) + "\n")
@@ -28,6 +29,7 @@ for i in range(0, len( results["whiteElo"])):
 fd.close()
 '''
 
+'''
 #----Winner Extraction cmp(A, B)----
 
 fd = open( "results/winner.fea", "w")
@@ -47,11 +49,11 @@ for i in range(0, len( results["whiteWins"])):
 		exit()
 
 fd.close()
-
+'''
 
 #----Draw or Not----
 '''
-fd = open( "is_draw.data", "w")
+fd = open( "results/is_draw.fea", "w")
 
 for i in range(0, len( results["whiteWins"])):
 	if( results["whiteWins"][i] == 1.0):
@@ -68,14 +70,14 @@ for i in range(0, len( results["whiteWins"])):
 		exit()
 
 fd.close()
-'''
+
 
 #----Match Length----
-'''
-fd = open( "match_len.data", "w")
+
+fd = open( "results/match_len.fea", "w")
 
 length = "0"
-n=25000
+n=50000
 i = -1
 for row in data_f:
     if i == n:
@@ -93,13 +95,15 @@ for row in data_f:
     	else:
     		length = row[findex+1:lindex]
 
+fd.write( length + "\n")
+
 fd.close()
 '''
 
 '''
-fd = open( "no_of_piece_taken.data", "w")
+fd = open( "results/no_of_piece_taken.fea", "w")
 
-n=25000
+n=50000
 i = -1
 no = 0;
 for row in data_f:
@@ -113,16 +117,16 @@ for row in data_f:
 
     else:
     	no += row.count('x')
-
+fd.write( str(no) + "\n")
 fd.close()
-'''
 
-'''
-fd1 = open( "no_of_piece_taken.data")
-fd2 = open( "match_len.data")
-fd3 = open( "no_of_piece_taken_scaled.data", "w")
 
-n=25000
+
+fd1 = open( "results/no_of_piece_taken.fea")
+fd2 = open( "results/match_len.fea")
+fd3 = open( "results/no_of_piece_taken_scaled.fea", "w")
+
+n=50000
 i = -1
 for i, row in enumerate(fd1):
 	length = fd2.readline()
@@ -134,12 +138,12 @@ for i, row in enumerate(fd1):
 fd1.close()
 fd2.close()
 fd3.close()
-'''
 
 '''
-fd = open( "no_of_checks.data", "w")
 
-n=25000
+fd = open( "results/no_of_checks.fea", "w")
+
+n=50000
 i = -1
 no = 0;
 for row in data_f:
@@ -154,14 +158,15 @@ for row in data_f:
     else:
     	no += row.count('+')
 
+fd.write( str(no) + "\n")
 fd.close()
-'''
-'''
-fd1 = open( "no_of_checks.data")
-fd2 = open( "match_len.data")
-fd3 = open( "no_of_checks_scaled.data", "w")
 
-n=25000
+
+fd1 = open( "results/no_of_checks.fea")
+fd2 = open( "results/match_len.fea")
+fd3 = open( "results/no_of_checks_scaled.fea", "w")
+
+n=50000
 i = -1
 for i, row in enumerate(fd1):
 	length = fd2.readline()
@@ -173,4 +178,3 @@ for i, row in enumerate(fd1):
 fd1.close()
 fd2.close()
 fd3.close()
-'''

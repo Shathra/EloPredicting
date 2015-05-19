@@ -19,14 +19,14 @@ def stddev( list):
 results = parser.parseData( "../data/data.pgn")
 elo = np.concatenate( [results["whiteElo"], results["blackElo"]])
 
-points = open("../data/stockfish.csv")
+points = open("../unused_files/stockfish.csv")
 
 allPoints = []
 
 i = 0;
 for row in points:
 
-	if( i == 25000):
+	if( i == 50000):
 		break
 
 	if( row.startswith('Event')):
@@ -43,7 +43,7 @@ for row in points:
 
 	i += 1
 
-std = [0] * 25000
+std = [0] * 50000
 
 
 fd = open( "variance_points.data", "w")
@@ -55,6 +55,7 @@ for match in allPoints:
 
 fd.close()
 
+'''
 results = parser.parseData( "../data/data.pgn")
 elo = results["whiteElo"] + results["blackElo"]
 maxElo = int(max(elo))
@@ -84,3 +85,4 @@ plt.ylabel( "Average Standard Deviation")
 plt.plot( x, y)
 plt.axis([minElo, maxElo, 0, 1000])
 plt.show()
+'''

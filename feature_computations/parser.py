@@ -1,6 +1,6 @@
 import numpy as np
 
-def parseData( path, n=25000, startWith=0):
+def parseData( path, n=50000, startWith=0):
 
     games = open( path)
 
