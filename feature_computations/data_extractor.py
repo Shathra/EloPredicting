@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import parser
 import math
 
-results = parser.parseData( "../data/data.pgn")
+results = parser.parseData( "../data/data.pgn", 50000)
 
 data_f = open("../data/data.pgn")
 
@@ -29,8 +29,8 @@ fd.close()
 '''
 
 #----Winner Extraction cmp(A, B)----
-'''
-fd = open( "winner.data", "w")
+
+fd = open( "results/winner.fea", "w")
 
 for i in range(0, len( results["whiteWins"])):
 	if( results["whiteWins"][i] == 1.0):
@@ -47,7 +47,7 @@ for i in range(0, len( results["whiteWins"])):
 		exit()
 
 fd.close()
-'''
+
 
 #----Draw or Not----
 '''
@@ -156,7 +156,7 @@ for row in data_f:
 
 fd.close()
 '''
-
+'''
 fd1 = open( "no_of_checks.data")
 fd2 = open( "match_len.data")
 fd3 = open( "no_of_checks_scaled.data", "w")
@@ -173,3 +173,4 @@ for i, row in enumerate(fd1):
 fd1.close()
 fd2.close()
 fd3.close()
+'''
