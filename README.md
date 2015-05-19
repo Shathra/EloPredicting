@@ -1,5 +1,10 @@
 # EloPredicting
 TODO List:
+  - [ ] Parse Features:
+  - [ ] Split training, validation and test features and labels:
+  - [x] Remove NA strings in data
+  - [ ] Write a tester
+
 * Parse Features:
   - [x] is_draw
   - [x] winner
