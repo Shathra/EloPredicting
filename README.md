@@ -6,7 +6,7 @@ TODO List:
   - [x] Parse Features:
   - [x] Split training, validation and test features and labels:
   - [x] Remove NA strings in data
-  - [ ] Write a tester
+  - [x] Write a tester
 
 * Parse Features:
   - [x] is_draw
