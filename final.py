@@ -34,6 +34,8 @@ Y = np.loadtxt( labels_path + "sum.lab")
 regressor = RandomForestRegressor(n_estimators=20)
 regressor.fit(X,Y)
 
+print( "...A+B predictor is ready")
+
 #Test Data A+B
 feature_list = []
 for feature in features:
@@ -46,6 +48,7 @@ for i in xrange(1, len(feature_list)):
 
 test_result_sum = regressor.predict(X)
 
+print( "...A+B labels are predicted")
 #A-B
 
 features = []
@@ -80,6 +83,8 @@ Y = np.loadtxt( labels_path + "dif.lab")
 regressor = RandomForestRegressor(n_estimators=20)
 regressor.fit(X,Y)
 
+print( "...A-B predictor is ready")
+
 #Test Data A+B
 feature_list = []
 for feature in features:
@@ -91,7 +96,8 @@ for i in xrange(1, len(feature_list)):
 	X = np.column_stack( (X, feature_list[i]))
 
 test_result_dif = regressor.predict(X)
-
+print( "...A-B labels are predicted")
+print( "\n...Generating submission file")
 
 final_fd = open( "submission.csv", "w")
 final_fd.write( "Event,WhiteElo,BlackElo\n")
@@ -107,3 +113,5 @@ for i in xrange( len(test_result_sum)):
 	final_fd.write( str(25001 + i) + "," + str(white) + "," + str(black) + "\n")
 
 final_fd.close()
+
+print '\033[92m' + '\nSubmission file is generated (submission.csv)' + '\033[0m'
