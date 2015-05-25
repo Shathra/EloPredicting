@@ -1,0 +1,14 @@
+Training Error
+[144.0880849999991, 35197.64635749981]
+Validation Error
+[374.0664599999994, 221233.4031539986]
+last_scores -> 0.0900746981935
+match_len -> 0.0858049188111
+mean -> 0.119304175235
+no_of_checks_scaled -> 0.0839641708773
+no_of_mistakes_scaled -> 0.0891742933748
+no_of_piece_taken_scaled -> 0.102422788551
+std_points -> 0.120728419476
+castle -> 0.102215573213
+queen -> 0.106589226829
+score_dif -> 0.0997217354402
