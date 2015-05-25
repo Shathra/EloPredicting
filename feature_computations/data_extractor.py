@@ -17,14 +17,16 @@ for i in range(0, len( results["whiteElo"])):
 	fd.write( str( int( results["whiteElo"][i] +  results["blackElo"][i])) + "\n")
 
 fd.close()
+'''
 
+#----Performance Difference Extraction A - B----
 
-#----Performance Difference Extraction |A - B|----
-
+'''
 fd = open( "results/dif.lab", "w")
 
 for i in range(0, len( results["whiteElo"])):
-	fd.write( str( abs( int( results["whiteElo"][i] - results["blackElo"][i]))) + "\n")
+    fd.write( str( int( results["whiteElo"][i] - results["blackElo"][i])) + "\n")
+	#fd.write( str( abs( int( results["whiteElo"][i] - results["blackElo"][i]))) + "\n")
 
 fd.close()
 '''
@@ -141,6 +143,7 @@ fd3.close()
 
 '''
 
+'''
 fd = open( "results/no_of_checks.fea", "w")
 
 n=50000
@@ -178,3 +181,4 @@ for i, row in enumerate(fd1):
 fd1.close()
 fd2.close()
 fd3.close()
+'''

@@ -3,6 +3,19 @@ import matplotlib.pyplot as plt
 import parser
 import math
 
+def odd_even( list):
+
+	odd = []
+	even = []
+
+	for i, item in enumerate( list):
+		if i % 2 == 0:
+			even.append( item)
+		else:
+			odd.append( item)
+
+	return [odd, even]
+
 def stddev( list):
 
 	if( len(list) == 0):
@@ -19,7 +32,8 @@ def stddev( list):
 results = parser.parseData( "../data/data.pgn")
 elo = np.concatenate( [results["whiteElo"], results["blackElo"]])
 
-points = open("../unused_files/stockfish.csv")
+#points = open("../unused_files/stockfish.csv")
+points = open("../data/stockfish_norm.csv")
 
 allPoints = []
 
@@ -39,13 +53,19 @@ for row in points:
 
 	matchToAdd = map( int, matchToAdd)
 
+	if( len(matchToAdd) == 0):
+		matchToAdd = [0, 0]
+
+	elif( len( matchToAdd) == 1):
+		matchToAdd = [0, 0]
+
 	allPoints.append( matchToAdd)
 
 	i += 1
 
 std = [0] * 50000
 
-
+'''
 fd = open( "variance_points.data", "w")
 i = 0;
 for match in allPoints:
@@ -54,6 +74,28 @@ for match in allPoints:
 	i += 1
 
 fd.close()
+'''
+
+#Min Max values
+#fd = open( "results/score_diff.data", "w")
+fd1 = open( "results/min_white.data", "w")
+fd2 = open( "results/max_white.data", "w")
+fd3 = open( "results/min_black.data", "w")
+fd4 = open( "results/max_black.data", "w")
+i = 0;
+for match in allPoints:
+	#fd.write( str( max(match) - min(match)) + "\n")
+	lis = odd_even( match)
+	fd1.write( str( min( lis[0])) + "\n")
+	fd2.write( str( max( lis[0])) + "\n")
+	fd4.write( str( -1 * min( lis[1])) + "\n")
+	fd3.write( str( -1 * max( lis[1])) + "\n")
+	i += 1
+
+fd1.close()
+fd2.close()
+fd3.close()
+fd4.close()
 
 '''
 results = parser.parseData( "../data/data.pgn")
